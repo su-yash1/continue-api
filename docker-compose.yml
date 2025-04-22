@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  ollama:
+    build: .
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    environment:
+      - OLLAMA_NUM_THREADS=4  # Use more threads for performance if you want
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
